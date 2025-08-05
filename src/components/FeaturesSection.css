@@ -1,0 +1,119 @@
+.features {
+  padding: 6rem 0;
+  background: hsl(var(--background));
+}
+
+.features__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.features__header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.features__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: hsl(var(--primary));
+  margin-bottom: 1rem;
+}
+
+.features__description {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: hsl(var(--muted-foreground));
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.features__card {
+  background: hsl(var(--card));
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  transition: var(--transition-smooth);
+  border: 1px solid hsl(var(--border));
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.features__card:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+.features__card:nth-child(3n) {
+  animation-delay: 0.4s;
+}
+
+.features__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-accent);
+  transform: scaleX(0);
+  transition: var(--transition-smooth);
+  transform-origin: left;
+}
+
+.features__card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.features__card:hover::before {
+  transform: scaleX(1);
+}
+
+.features__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: var(--gradient-primary);
+  border-radius: 20px;
+  color: hsl(var(--primary-foreground));
+  transition: var(--transition-smooth);
+}
+
+.features__card:hover .features__card-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.features__card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin-bottom: 1rem;
+}
+
+.features__card-description {
+  color: hsl(var(--muted-foreground));
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 1024px) {
+  .features__container {
+    padding: 0 2rem;
+  }
+  
+  .features__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

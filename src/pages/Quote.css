@@ -1,0 +1,91 @@
+.quote {
+  min-height: 100vh;
+  padding: 120px 0 60px;
+  background: hsl(var(--background));
+}
+
+.quote__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.quote__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.quote__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: hsl(var(--primary));
+  margin-bottom: 1rem;
+}
+
+.quote__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.quote__form {
+  background: hsl(var(--card));
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid hsl(var(--border));
+}
+
+.quote__section {
+  margin-bottom: 2rem;
+}
+
+.quote__section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: hsl(var(--primary));
+  margin-bottom: 1rem;
+}
+
+.quote__field {
+  margin-bottom: 1rem;
+}
+
+.quote__field label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.quote__field input,
+.quote__field select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  background: hsl(var(--background));
+}
+
+.quote__submit {
+  width: 100%;
+  padding: 1rem;
+  background: var(--gradient-primary);
+  color: hsl(var(--primary-foreground));
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .quote__content {
+    grid-template-columns: 2fr 1fr;
+  }
+}
