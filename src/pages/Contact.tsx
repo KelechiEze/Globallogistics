@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, MessageCircle, CheckCircle } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
@@ -100,7 +100,7 @@ const Contact = () => {
       {/* Hero Section */}
       <section className="contact__hero">
         <div className="contact__hero-container">
-          <div className="contact__hero-content">
+          <div className="contact__hero-content animate-fade-in">
             <h1 className="contact__hero-title">Get in Touch</h1>
             <p className="contact__hero-description">
               Have questions about our services? Need support with your shipment? 
@@ -110,14 +110,14 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Info */}
+      {/* Contact Info Cards */}
       <section className="contact__info">
         <div className="contact__container">
           <div className="contact__info-grid">
             {contactInfo.map((info, index) => (
-              <div key={index} className="contact__info-card">
+              <div key={index} className="contact__info-card animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="contact__info-icon">
-                  <info.icon className="w-6 h-6" />
+                  <info.icon />
                 </div>
                 <h3 className="contact__info-title">{info.title}</h3>
                 <div className="contact__info-details">
@@ -132,114 +132,144 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form & Map */}
+      {/* Main Content */}
       <section className="contact__main">
         <div className="contact__container">
-          <div className="contact__main-grid">
+          <div className="contact__content">
             {/* Contact Form */}
             <div className="contact__form-section">
-              <h2 className="contact__form-title">Send us a Message</h2>
+              <div className="contact__form-header">
+                <h2 className="contact__form-title">Send us a Message</h2>
+                <p className="contact__form-subtitle">
+                  Fill out the form below and we'll get back to you within 2 hours
+                </p>
+              </div>
               
               {submitted ? (
                 <div className="contact__success">
-                  <div className="contact__success-icon">
-                    <MessageCircle className="w-12 h-12" />
+                  <div className="contact__success-content">
+                    <div className="contact__success-icon">
+                      <CheckCircle />
+                    </div>
+                    <h3>Message Sent Successfully!</h3>
+                    <p>Thank you for contacting us. We'll get back to you within 2 hours.</p>
+                    <button 
+                      className="contact__success-button"
+                      onClick={() => setSubmitted(false)}
+                    >
+                      Send Another Message
+                    </button>
                   </div>
-                  <h3>Message Sent Successfully!</h3>
-                  <p>Thank you for contacting us. We'll get back to you within 2 hours.</p>
-                  <button 
-                    className="contact__success-button"
-                    onClick={() => setSubmitted(false)}
-                  >
-                    Send Another Message
-                  </button>
                 </div>
               ) : (
-                <form className="contact__form" onSubmit={handleSubmit}>
-                  <div className="contact__form-group">
-                    <label>Inquiry Type</label>
-                    <select
-                      value={formData.inquiryType}
-                      onChange={(e) => handleInputChange('inquiryType', e.target.value)}
-                      required
-                    >
-                      {inquiryTypes.map((type) => (
-                        <option key={type.value} value={type.value}>
-                          {type.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="contact__form-row">
+                <div className="contact__form-container">
+                  <form className="contact__form" onSubmit={handleSubmit}>
                     <div className="contact__form-group">
-                      <label>Full Name</label>
+                      <label>Inquiry Type</label>
+                      <select
+                        value={formData.inquiryType}
+                        onChange={(e) => handleInputChange('inquiryType', e.target.value)}
+                        required
+                      >
+                        {inquiryTypes.map((type) => (
+                          <option key={type.value} value={type.value}>
+                            {type.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="contact__form-row">
+                      <div className="contact__form-group">
+                        <label>Full Name</label>
+                        <input
+                          type="text"
+                          value={formData.name}
+                          onChange={(e) => handleInputChange('name', e.target.value)}
+                          placeholder="Your full name"
+                          required
+                        />
+                      </div>
+                      <div className="contact__form-group">
+                        <label>Email Address</label>
+                        <input
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => handleInputChange('email', e.target.value)}
+                          placeholder="your.email@example.com"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="contact__form-group">
+                      <label>Subject</label>
                       <input
                         type="text"
-                        value={formData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
-                        placeholder="Your full name"
+                        value={formData.subject}
+                        onChange={(e) => handleInputChange('subject', e.target.value)}
+                        placeholder="What's this about?"
                         required
                       />
                     </div>
+
                     <div className="contact__form-group">
-                      <label>Email Address</label>
-                      <input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        placeholder="your.email@example.com"
+                      <label>Message</label>
+                      <textarea
+                        value={formData.message}
+                        onChange={(e) => handleInputChange('message', e.target.value)}
+                        placeholder="Tell us how we can help you..."
+                        rows={6}
                         required
                       />
                     </div>
-                  </div>
 
-                  <div className="contact__form-group">
-                    <label>Subject</label>
-                    <input
-                      type="text"
-                      value={formData.subject}
-                      onChange={(e) => handleInputChange('subject', e.target.value)}
-                      placeholder="What's this about?"
-                      required
-                    />
-                  </div>
-
-                  <div className="contact__form-group">
-                    <label>Message</label>
-                    <textarea
-                      value={formData.message}
-                      onChange={(e) => handleInputChange('message', e.target.value)}
-                      placeholder="Tell us how we can help you..."
-                      rows={6}
-                      required
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="contact__form-submit"
-                    disabled={isSubmitting}
-                  >
-                    <Send className="w-5 h-5" />
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </button>
-                </form>
+                    <button
+                      type="submit"
+                      className="contact__form-submit"
+                      disabled={isSubmitting}
+                    >
+                      <Send />
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </button>
+                  </form>
+                </div>
               )}
             </div>
 
-            {/* Map Section */}
-            <div className="contact__map-section">
-              <h2 className="contact__map-title">Our Locations</h2>
-              <div className="contact__map">
-                <img 
-                  src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                  alt="Global office locations map"
-                  className="contact__map-image"
-                />
-                <div className="contact__map-overlay">
-                  <p>Global Headquarters</p>
-                  <p>New York, NY</p>
+            {/* Contact Details */}
+            <div className="contact__details">
+              <div className="contact__details-content">
+                <h3>Ready to Get Started?</h3>
+                <p>
+                  Our team of logistics experts is standing by to help you with all your shipping needs. 
+                  Contact us today for a free consultation.
+                </p>
+                
+                <div className="contact__quick-info">
+                  <div className="contact__quick-item">
+                    <Phone />
+                    <div>
+                      <h4>Call Us</h4>
+                      <p>+1 (555) 123-4567</p>
+                    </div>
+                  </div>
+                  
+                  <div className="contact__quick-item">
+                    <Mail />
+                    <div>
+                      <h4>Email Us</h4>
+                      <p>support@globalship.com</p>
+                    </div>
+                  </div>
+                  
+                  <div className="contact__quick-item">
+                    <Clock />
+                    <div>
+                      <h4>Response Time</h4>
+                      <p>Within 2 hours</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -259,14 +289,20 @@ const Contact = () => {
           
           <div className="contact__offices-grid">
             {offices.map((office, index) => (
-              <div key={index} className="contact__office-card">
+              <div key={index} className="contact__office-card animate-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
                 <div className="contact__office-image">
                   <img src={office.image} alt={`${office.city} office`} />
+                  <div className="contact__office-overlay">
+                    <MapPin />
+                  </div>
                 </div>
                 <div className="contact__office-content">
                   <h3 className="contact__office-city">{office.city}</h3>
                   <p className="contact__office-address">{office.address}</p>
-                  <p className="contact__office-phone">{office.phone}</p>
+                  <div className="contact__office-contact">
+                    <Phone />
+                    <span>{office.phone}</span>
+                  </div>
                 </div>
               </div>
             ))}
