@@ -1,5 +1,7 @@
 import React from 'react';
-import { Shield, Clock, Globe, Smartphone, HeadphonesIcon, TrendingUp } from 'lucide-react';
+import { Shield, Clock, Globe, Smartphone, Headphones, TrendingUp } from 'lucide-react';
+import Lottie from 'lottie-react';
+import backgroundAnimation from './truck.json';
 import './FeaturesSection.css';
 
 const FeaturesSection = () => {
@@ -25,7 +27,7 @@ const FeaturesSection = () => {
       description: 'Track and manage shipments on-the-go with our mobile platform',
     },
     {
-      icon: HeadphonesIcon,
+      icon: Headphones,
       title: '24/7 Support',
       description: 'Round-the-clock customer service and technical assistance',
     },
@@ -38,6 +40,17 @@ const FeaturesSection = () => {
 
   return (
     <section className="features">
+      {/* Fixed background */}
+      <div className="features__background">
+        <Lottie 
+          animationData={backgroundAnimation} 
+          loop={true} 
+          autoplay={true} 
+          className="features__lottie"
+        />
+        <div className="features__overlay"></div>
+      </div>
+      
       <div className="features__container">
         <div className="features__header">
           <h2 className="features__title">Why Choose GlobalShip?</h2>

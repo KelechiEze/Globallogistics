@@ -1,74 +1,159 @@
-.services {
+.logistics-wrapper {
   min-height: 100vh;
   padding-top: 80px;
 }
 
-.services__hero {
+/* Hero Section */
+.logistics-hero {
   padding: 4rem 0;
   background: var(--gradient-hero);
   color: hsl(var(--primary-foreground));
-}
-
-.services__hero-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
   text-align: center;
 }
-
-.services__hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-}
-
-.services__main {
-  padding: 6rem 0;
-}
-
-.services__container {
+.logistics-hero-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
+.logistics-hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.logistics-hero-text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
 
-.services__grid {
+/* Services Grid */
+.logistics-services {
+  padding: 6rem 0;
+}
+.logistics-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
+}
+.logistics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
 }
-
-.services__card {
+.logistics-card {
   background: hsl(var(--card));
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid hsl(var(--border));
-  transition: var(--transition-smooth);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.services__card:hover {
+.logistics-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-heavy);
 }
-
-.services__card-image {
+.logistics-card-image {
   position: relative;
   height: 200px;
   overflow: hidden;
 }
-
-.services__card-image img {
+.logistics-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-.services__card-content {
+.logistics-card-icon {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+.logistics-card-body {
   padding: 2rem;
+}
+.logistics-card-body h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.logistics-card-body p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.logistics-card-body ul {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+.logistics-card-body li {
+  list-style: disc;
+  margin-bottom: 0.5rem;
+}
+.logistics-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logistics-card-footer button {
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Highlights */
+.logistics-highlights {
+  padding: 4rem 0;
+  background: hsl(var(--muted));
+  text-align: center;
+}
+.highlight-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.highlight-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid hsl(var(--border));
+}
+.highlight-card h3 {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+}
+
+/* CTA */
+.logistics-cta {
+  padding: 4rem 0;
+  background: var(--gradient-hero);
+  color: white;
+  text-align: center;
+}
+.cta-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+.btn-primary {
+  background: var(--primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  color: white;
+}
+.btn-secondary {
+  background: transparent;
+  border: 2px solid white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  color: white;
 }
 
 @media (min-width: 1024px) {
-  .services__container {
+  .logistics-inner {
     padding: 0 2rem;
   }
 }

@@ -2,8 +2,8 @@ import React from 'react';
 import { Package, Truck, Ship, Plane, Clock, Shield, Globe, Zap } from 'lucide-react';
 import './Services.css';
 
-const Services = () => {
-  const services = [
+const LogisticsServices = () => {
+  const serviceList = [
     {
       icon: Package,
       title: 'Express Delivery',
@@ -16,7 +16,7 @@ const Services = () => {
         'Priority handling'
       ],
       pricing: 'Starting from $15',
-      image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=600&q=80'
     },
     {
       icon: Ship,
@@ -30,7 +30,7 @@ const Services = () => {
         'Insurance coverage'
       ],
       pricing: 'Starting from $25',
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=600&q=80'
     },
     {
       icon: Truck,
@@ -44,7 +44,7 @@ const Services = () => {
         'Fleet management'
       ],
       pricing: 'Custom quotes',
-      image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&q=80'
     },
     {
       icon: Plane,
@@ -58,11 +58,11 @@ const Services = () => {
         'Dangerous goods certified'
       ],
       pricing: 'Starting from $50',
-      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80'
     }
   ];
 
-  const features = [
+  const featureHighlights = [
     {
       icon: Clock,
       title: 'Real-time Tracking',
@@ -86,48 +86,41 @@ const Services = () => {
   ];
 
   return (
-    <div className="services">
+    <div className="logistics-wrapper">
       {/* Hero Section */}
-      <section className="services__hero">
-        <div className="services__hero-container">
-          <div className="services__hero-content">
-            <h1 className="services__hero-title">Our Logistics Services</h1>
-            <p className="services__hero-description">
-              Comprehensive shipping and logistics solutions tailored to your business needs. 
-              From express delivery to international freight, we've got you covered.
-            </p>
-          </div>
+      <section className="logistics-hero">
+        <div className="logistics-hero-container">
+          <h1 className="logistics-hero-title">Our Logistics Services</h1>
+          <p className="logistics-hero-text">
+            Comprehensive shipping and logistics solutions tailored to your business needs.
+            From express delivery to international freight, we've got you covered.
+          </p>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="services__main">
-        <div className="services__container">
-          <div className="services__grid">
-            {services.map((service, index) => (
-              <div key={index} className="services__card">
-                <div className="services__card-image">
+      {/* Services */}
+      <section className="logistics-services">
+        <div className="logistics-inner">
+          <div className="logistics-grid">
+            {serviceList.map((service, index) => (
+              <div key={index} className="logistics-card">
+                <div className="logistics-card-image">
                   <img src={service.image} alt={service.title} />
-                  <div className="services__card-overlay">
+                  <div className="logistics-card-icon">
                     <service.icon className="w-12 h-12" />
                   </div>
                 </div>
-                
-                <div className="services__card-content">
-                  <h3 className="services__card-title">{service.title}</h3>
-                  <p className="services__card-description">{service.description}</p>
-                  
-                  <ul className="services__card-features">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx}>{feature}</li>
+                <div className="logistics-card-body">
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                  <ul>
+                    {service.features.map((feat, i) => (
+                      <li key={i}>{feat}</li>
                     ))}
                   </ul>
-                  
-                  <div className="services__card-footer">
-                    <span className="services__card-pricing">{service.pricing}</span>
-                    <button className="services__card-button">
-                      Get Quote
-                    </button>
+                  <div className="logistics-card-footer">
+                    <span>{service.pricing}</span>
+                    <button>Get Quote</button>
                   </div>
                 </div>
               </div>
@@ -136,46 +129,31 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="services__features">
-        <div className="services__container">
-          <div className="services__features-header">
-            <h2 className="services__features-title">Why Choose Our Services?</h2>
-            <p className="services__features-description">
-              Experience the difference with our advanced logistics platform and dedicated support team.
-            </p>
-          </div>
-          
-          <div className="services__features-grid">
-            {features.map((feature, index) => (
-              <div key={index} className="services__feature-card">
-                <div className="services__feature-icon">
-                  <feature.icon className="w-8 h-8" />
-                </div>
-                <h3 className="services__feature-title">{feature.title}</h3>
-                <p className="services__feature-description">{feature.description}</p>
+      {/* Feature Highlights */}
+      <section className="logistics-highlights">
+        <div className="logistics-inner">
+          <h2>Why Choose Our Services?</h2>
+          <p>Experience the difference with our advanced logistics platform and dedicated support team.</p>
+          <div className="highlight-grid">
+            {featureHighlights.map((feat, idx) => (
+              <div key={idx} className="highlight-card">
+                <feat.icon className="w-8 h-8" />
+                <h3>{feat.title}</h3>
+                <p>{feat.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="services__cta">
-        <div className="services__container">
-          <div className="services__cta-content">
-            <h2 className="services__cta-title">Ready to Ship?</h2>
-            <p className="services__cta-description">
-              Get started with our logistics services today. Request a quote or speak with our team.
-            </p>
-            <div className="services__cta-buttons">
-              <button className="services__cta-button services__cta-button--primary">
-                Get Quote
-              </button>
-              <button className="services__cta-button services__cta-button--secondary">
-                Contact Sales
-              </button>
-            </div>
+      {/* Call to Action */}
+      <section className="logistics-cta">
+        <div className="logistics-inner">
+          <h2>Ready to Ship?</h2>
+          <p>Get started with our logistics services today. Request a quote or speak with our team.</p>
+          <div className="cta-buttons">
+            <button className="btn-primary">Get Quote</button>
+            <button className="btn-secondary">Contact Sales</button>
           </div>
         </div>
       </section>
@@ -183,4 +161,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default LogisticsServices;

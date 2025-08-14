@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Package, Truck, Globe, Phone } from 'lucide-react';
+import { Menu, X, Package, Globe } from 'lucide-react';
+import Lottie from 'lottie-react';
+import truckAnimation from './truck2.json'; // Make sure to place truck.json in the same directory
 import './Header.css';
 
 const Header = () => {
@@ -29,6 +31,17 @@ const Header = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Truck Animation Component
+  const TruckAnimation = () => (
+    <div className="truck-animation">
+      <Lottie 
+        animationData={truckAnimation} 
+        loop={true} 
+        autoplay={true} 
+      />
+    </div>
+  );
 
   return (
     <header className={`header ${isScrolled ? 'header--scrolled' : ''}`}>
@@ -66,7 +79,7 @@ const Header = () => {
             Track Package
           </Link>
           <Link to="/quote" className="header__cta header__cta--primary">
-            <Truck className="w-4 h-4" />
+            <TruckAnimation />
             Get Quote
           </Link>
         </div>
@@ -107,7 +120,7 @@ const Header = () => {
             className="header__mobile-cta header__mobile-cta--primary"
             onClick={() => setIsMenuOpen(false)}
           >
-            <Truck className="w-4 h-4" />
+            <TruckAnimation />
             Get Quote
           </Link>
         </div>

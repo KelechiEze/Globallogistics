@@ -1,12 +1,46 @@
+/* FeaturesSection.css */
 .features {
   padding: 6rem 0;
-  background: hsl(var(--background));
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
+}
+
+.features__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.features__lottie {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  animation: lottieScale 30s infinite alternate ease-in-out;
+}
+
+.features__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+  z-index: 1;
 }
 
 .features__container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .features__header {
@@ -18,13 +52,14 @@
 .features__title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
   margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .features__description {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
-  color: hsl(var(--muted-foreground));
+  color: rgba(255, 255, 255, 0.85);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -32,20 +67,21 @@
 
 .features__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
 .features__card {
-  background: hsl(var(--card));
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   padding: 2.5rem;
   text-align: center;
   transition: var(--transition-smooth);
-  border: 1px solid hsl(var(--border));
+  border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
   overflow: hidden;
   animation: fadeInUp 0.8s ease-out;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .features__card:nth-child(even) {
@@ -93,6 +129,7 @@
 
 .features__card:hover .features__card-icon {
   transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .features__card-title {
@@ -106,6 +143,27 @@
   color: hsl(var(--muted-foreground));
   line-height: 1.6;
   font-size: 0.95rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes lottieScale {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.1) rotate(1deg);
+  }
 }
 
 @media (min-width: 1024px) {
